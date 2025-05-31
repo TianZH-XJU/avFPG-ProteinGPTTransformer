@@ -134,4 +134,4 @@ The ESM-Transformer framework achieves efficient prediction and optimization thr
    ![Transformer Architecture](figures/transformer.png)
 
 2. **Data-Sequence Generation Workflow**  
-   ![Training vs Inference](figures/training_inference.png)
+   ![Training vs Inference](https://github.com/TianZH-XJU/avFPG-ProteinGPTTransformer/blob/main/Training%20vs%20Inference.png)
