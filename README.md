@@ -61,21 +61,45 @@ e_{\text{global}} = \frac{1}{L} \sum_{i=1}^{L} E_i \in \mathbb{R}^{d}
   \text{GELU}(x) = x \cdot \frac{1}{2} \left[ 1 + \tanh\left( \sqrt{\frac{2}{\pi}} \left( x + 0.044715x^3 \right) \right) \right]
   ```
 
-### Sequence Generation
-- **High entropy site screening**:
-  ```math
-  H(X) = -\sum_{i=1}^{n} p_i(x_i) \log p_i(x_i)
-  ```
-  
-- **Controllable mutation**:
-  - Max mutations: 6
-  - Random amino acid replacement
-  - Generate 30,000 candidate sequences
 
-- **ESM stability screening**:
-  ```math
-  L(S) = -\sum_{i=1}^{n} \log p(x_i | x_{<i})
-  ```
+# Sequence Generation Strategy
+
+## High Entropy Site Screening
+Shannon entropy calculation:
+
+```math
+H(X) = -\sum_{i=1}^{n} p_i(x_i) \log p_i(x_i)
+```
+
+## Controllable Mutation Generation
+Mutation parameters:
+
+- **Maximum mutations**: 6  
+  (Avoids excessive damage to protein structure)
+- **Random replacement**:  
+  Different amino acid from original at each selected position
+- **Diversity control**:  
+  Generate 30,000 candidate sequences  
+  (Ensures coverage of major mutation combinations)
+
+```mermaid
+graph TD
+    A[Start] --> B[Select Mutation Sites]
+    B --> C[Random Amino Acid Replacement]
+    C --> D[Generate Candidate Sequence]
+    D --> E{Count < 30,000?}
+    E -->|Yes| B
+    E -->|No| F[Final Candidate Pool]
+```
+
+### Key Parameters Explained
+| Parameter | Value | Purpose |
+|----------|-------|---------|
+| Max Mutations | 6 | Prevents structural destabilization |
+| Replacement | Random non-wildtype | Maintains diversity |
+| Candidate Pool | 30,000 sequences | Ensures broad coverage |
+
+This strategy balances exploration of mutation space with practical constraints to efficiently generate high-quality protein variants.
 
 ## Experimental Setup
 ### Dataset Specifications
