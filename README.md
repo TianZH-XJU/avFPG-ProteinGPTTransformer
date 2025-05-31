@@ -144,11 +144,7 @@ The ESM-Transformer framework achieves efficient prediction and optimization thr
 ```bibtex
 @article{yang2025brightness,
   title={Brightness prediction and optimization method of fluorescent protein based on ESM embedding and Transformer},
-  author={Yang, Li and Shui, Liu Ruo and Hang, Zheng Hang and Han, Tian Zi and Fei, Ma Hao},
-  journal={Perspectives on Politics},
-  volume={6},
-  year={2025},
-  doi={10.1017/pps.2025.xx}
+  author={TianZH,LiY,Majun,ZhengHH,LiuRS,MaHF,QinYJ}
 }
 ```
 
